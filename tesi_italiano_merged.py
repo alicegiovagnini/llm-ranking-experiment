@@ -5,7 +5,7 @@ import copy
 import requests
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
-from gpt4all import GPT4All  # type: ignore
+#from gpt4all import GPT4All  # type: ignore
 from st_draggable_list import DraggableList  # type: ignore
 import numpy as np  # type: ignore
 import pandas as pd  # type: ignore
