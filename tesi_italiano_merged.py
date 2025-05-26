@@ -9,7 +9,7 @@ from streamlit_autorefresh import st_autorefresh
 from st_draggable_list import DraggableList  # type: ignore
 import numpy as np  # type: ignore
 import pandas as pd  # type: ignore
-import scipy.stats as stats  # type: ignore
+#import scipy.stats as stats  # type: ignore
 from fuzzywuzzy import process  # type: ignore
 import matplotlib.pyplot as plt  # type: ignore
 from database import get_engine_alone, get_engine, get_session, insert_user_results_to_db, insert_user_info_to_db, \
@@ -1777,10 +1777,17 @@ elif st.session_state.page == 6:
                 den += 1
 
     # spearman rank correlation
-    spearman_corr, _ = stats.spearmanr(user_ranks, nasa_ranks)
-    spearman_corr_afterai, _ = stats.spearmanr(user_ranks_afterai, nasa_ranks)
-    if len(normalized_ai_ranks_dictionary) == 15:
-        spearman_corr_ai, _ = stats.spearmanr(ai_ranks, nasa_ranks)
+    #spearman_corr, _ = stats.spearmanr(user_ranks, nasa_ranks)
+    #spearman_corr_afterai, _ = stats.spearmanr(user_ranks_afterai, nasa_ranks)
+    #if len(normalized_ai_ranks_dictionary) == 15:
+        #spearman_corr_ai, _ = stats.spearmanr(ai_ranks, nasa_ranks)
+    # Sostituisci stats.spearmanr con questo:
+    def spearman_correlation(x, y):
+        import numpy as np
+        from pandas import Series
+        return Series(x).corr(Series(y), method='spearman')
+
+# spearman_corr = spearman_correlation(user_ranks, nasa_ranks)
 
     st.title("RISULTATI")
     st.write("---")
